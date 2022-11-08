@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('desenho1')
+      var contexto = canvas.getContext('2d')
+
+      function desenha() {
+        contexto.fillStyle='Black'
+        //posX(centro), posY(centro), Raio, AngInicial(rad), AngFinal(rad) sentido
+        //sentido: true = horário / false= anti-horário
+        contexto.arc(
+          100,
+          100,
+          100,
+          (Math.PI / 180) * 0,
+          (Math.PI / 180) * 90,
+          true //horário
+        )
+        contexto.fill()
+
+        contexto.beginPath() //inicia outro
+
+        contexto.fillStyle='Red'
+        contexto.arc(
+          100,
+          100,
+          100,
+          (Math.PI / 180) * 0,
+          (Math.PI / 180) * 90,
+          false //anti-horário
+        )
+        contexto.fill()
+
+        anima = requestAnimationFrame(desenha)
+      }
+      desenha()
+    </script>
+  </body>
+</html>
