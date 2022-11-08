@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('desenho1')
+      var contexto = canvas.getContext('2d')
+
+      function desenha() {
+        contexto.clearRect(0, 0, 500, 500)
+
+        //x1, y1, x2, y2, raio
+        contexto.moveTo(0, 0)
+        contexto.lineTo(100, 100)
+
+        contexto.arcTo(225, 225, 450, 0, 30)
+
+        contexto.lineTo(450, 0)
+
+        contexto.stroke()
+      }
+      desenha()
+    </script>
+  </body>
+</html>
