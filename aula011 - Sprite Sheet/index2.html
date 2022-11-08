@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      let canvas = document.getElementById('desenho1')
+      let contexto = canvas.getContext('2d')
+
+      let jogador = new Image()
+      jogador.src = 'jogador.png'
+      let numSprite = 0
+      let posInicialX = 0
+      let larguraImagem = 0
+      let larguraSprite = 0
+      let qtdSprite = 4
+
+      jogador.onload = () => {
+        larguraSprite = jogador.width / qtdSprite
+        alturaSprite = jogador.height / qtdSprite
+      }
+
+      let anima = setInterval(() => {
+        contexto.clearRect(0, 0, 450, 450)
+        numSprite++
+        if (numSprite > 3) numSprite = 0
+
+        posInicialX = larguraSprite * numSprite
+        contexto.drawImage(
+          jogador, //imagem
+          posInicialX, //xInicialRecorte
+          0, // yInicialRecorte
+          larguraSprite, // larguraRecorte
+          alturaSprite, // alturaRecorte
+          0, // posX
+          0, // posY
+          larguraSprite, // larguraImagem
+          alturaSprite //alturaImagem
+        )
+      }, 200)
+    </script>
+  </body>
+</html>
