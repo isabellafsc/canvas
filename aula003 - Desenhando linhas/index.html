@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+
+    <script type="text/javascript">
+      function desenha() {
+        var canvas = document.getElementById('desenho1')
+        var contexto = canvas.getContext('2d')
+
+        contexto.moveTo(0, 0) //Move posição inicial
+        contexto.lineTo(250, 250) //Ate onde vai a linha
+        contexto.lineTo(400, 250) //move a linha partindo do ponto anterior
+        contexto.lineTo(400, 100) //move a linha partindo do ponto anterior
+        contexto.moveTo(200, 300) //Move posição inicial
+        contexto.lineTo(250, 250) //Ate onde vai a linha
+        contexto.stroke() //desenha a linha
+      }
+    </script>
+  </head>
+  <body onload="desenha()">
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+  </body>
+</html>
