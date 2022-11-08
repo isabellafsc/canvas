@@ -22,21 +22,45 @@
       var canvas = document.getElementById('desenho1')
       var contexto = canvas.getContext('2d')
       let px = 0
-      let py = 10
+      let py = 0
       let dirX = 1
+      let dirY = 0
       let larguraRetângulo = 50
-      let alturaRetangulo = 50
+      let alturaRetângulo = 50
       let anima
       let larguraCanvas = (alturaCanvas = 450)
 
       function desenha() {
         contexto.clearRect(0, 0, larguraCanvas, alturaCanvas)
-        contexto.fillStyle = 'purple'
-        contexto.fillRect(px, py, larguraRetângulo, alturaRetangulo)
+
+        contexto.fillStyle = 'yellow'
+        contexto.fillRect(px, py, larguraRetângulo, alturaRetângulo)
+
+        contexto.lineWidth = 3 //Largura do contorno
+        contexto.strokeStyle = 'black' //Estilo do contorno
+        contexto.strokeRect(px, py, larguraRetângulo, alturaRetângulo)
 
         px += dirX
-        if (px > larguraCanvas - larguraRetângulo || px <= 0) {
-          dirX *= -1
+        py += dirY
+
+        if (px == 0 && py == 0) {
+          dirX = 1
+          dirY = 0
+        }
+        if (px + larguraRetângulo + 2 > larguraCanvas && py == 0) {
+          dirX = 0
+          dirY = 1
+        }
+        if (
+          px + larguraRetângulo + 2 > larguraCanvas &&
+          py + alturaRetângulo + 2 > alturaCanvas
+        ) {
+          dirX = -1
+          dirY = 0
+        }
+        if (px <= 0 && py + alturaRetângulo + 2 > alturaCanvas) {
+          dirX = 0
+          dirY = -1
         }
         anima = requestAnimationFrame(desenha)
       }
