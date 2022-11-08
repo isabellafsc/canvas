@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('desenho1')
+      var contexto = canvas.getContext('2d')
+
+      let tamanhoMax = 40
+      let tamanhoMin = 10
+      let angInicial = (angFinal = 0)
+
+      function desenha() {
+        contexto.clearRect(0, 0, 500, 500)
+        for (let i = 0; i < 30; i++) {
+          contexto.beginPath()
+          contexto.fillStyle =
+            'rgb( ' +
+            Math.random() * 255 +
+            ',' +
+            Math.random() * 255 +
+            ',' +
+            Math.random() * 255 +
+            ')'
+          contexto.arc(
+            Math.random() * 450,
+            Math.random() * 450,
+            Math.random() * tamanhoMax + tamanhoMin,
+            (Math.PI / 180) * 0,
+            (Math.PI / 180) * 360,
+            true
+          )
+          contexto.fill()
+        }
+
+        contexto.beginPath()
+        contexto.fillStyle = 'black'
+        contexto.arc(
+          450 / 2,
+          450 / 2,
+          150,
+          (Math.PI / 180) * angInicial,
+          (Math.PI / 180) * angFinal,
+          false
+        )
+        contexto.fill()
+
+        angFinal++
+        if (angFinal > 360) {
+          angFinal = 0
+        }
+        anima = requestAnimationFrame(desenha)
+      }
+      desenha()
+    </script>
+  </body>
+</html>
