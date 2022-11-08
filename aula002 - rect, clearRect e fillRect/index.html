@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+
+    <script type="text/javascript">
+      function desenha() {
+        var canvas = document.getElementById('desenho1')
+        var contexto = canvas.getContext('2d')
+
+        contexto.fillStyle = 'rgb(0,0,255)' //Define preenchimento
+        contexto.fillRect(0, 0, 100, 100) //desenha retângulo preenchido
+
+        contexto.fillStyle = 'rgb(255,0,0)'
+        contexto.rect(0, 100, 100, 100) //desenha retângulo sem preenchimento
+        contexto.fill()  //preenche retângulo
+
+        contexto.fillStyle = 'rgb(0,255,0)'
+        contexto.fillRect(100, 0, 200, 200)
+        contexto.clearRect(150, 50, 100, 100) //apaga área do canvas
+      }
+    </script>
+
+  </head>
+  <body onload="desenha()">
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+  </body>
+</html>
