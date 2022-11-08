@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('desenho1')
+      var contexto = canvas.getContext('2d')
+      let px = 0
+      let py = 10
+      let dirX = 1
+      let larguraRetângulo = 50
+      let alturaRetângulo = 50
+      let anima
+      let larguraCanvas = (alturaCanvas = 450)
+
+      function desenha() {
+        contexto.clearRect(0, 0, larguraCanvas, alturaCanvas)
+        contexto.fillStyle = 'purple'
+        contexto.fillRect(px, py, larguraRetângulo, alturaRetângulo)
+
+        px += dirX
+        if (px > larguraCanvas - larguraRetângulo || px <= 0) {
+          dirX *= -1
+        }
+        anima = requestAnimationFrame(desenha)
+      }
+      desenha()
+    </script>
+  </body>
+</html>
