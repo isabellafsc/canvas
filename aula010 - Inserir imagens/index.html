@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de canvas</title>
+  </head>
+  <body>
+    <img src="cores.jpg" />
+    <canvas
+      id="desenho1"
+      width="450"
+      height="450"
+      style="border: 1px solid black"
+    >
+      <h1>
+        Conteúdo dentro do canvas só será mostrado se o navegador não tiver
+        suporte
+      </h1>
+    </canvas>
+
+    <script type="text/javascript">
+      let canvas = document.getElementById('desenho1')
+      let contexto = canvas.getContext('2d')
+
+      let nave = new Image()
+      nave.src = 'nave.png'
+      nave.onload = () => {
+        //imagem, x
+        contexto.drawImage(nave, 0, 100, 50, 50)
+      }
+      // ou
+      // nave.addEventListener('load', () => {
+      //   contexto.drawImage(nave, 0, 0)
+      // })
+
+      let cores = new Image()
+      cores.src = 'cores.jpg'
+      cores.onload = () => {
+        //imagem, xInicialRecorte, yInicialRecorte, larguraRecorte, alturaRecorte, posX, posY, larguraImagem, alturaImagem
+        contexto.drawImage(cores, 0, 0, 50, 50, 0, 0, 50, 50)
+        contexto.drawImage(cores, 150, 0, 50, 50, 150, 0, 100, 100)
+        contexto.drawImage(cores, 25, 0, 50, 50, 50, 50, 50, 50)
+      }
+    </script>
+  </body>
+</html>
